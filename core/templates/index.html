@@ -1,7 +1,10 @@
 {% load static %}
-<audio
-    controls
-    src="{% static 'audio/Mindless Self Indulgence - Evening Wear.mp3' %}"
->
-    Your browser does not support the <code>audio</code> element.
-</audio>
+{% for track in tracks %}
+
+<figure>
+    <figcaption>{{ track.author }} - {{ track.name }}</figcaption>
+    <audio controls src="{% static track.path %}">
+        Your browser does not support the <code>audio</code> element.
+    </audio>
+</figure>
+{% endfor %}
