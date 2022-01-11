@@ -1,4 +1,8 @@
+{% extends "base.html" %}
 {% load static %}
+
+
+{% block content %}
 {% for track in tracks %}
 
 <figure>
@@ -7,4 +11,6 @@
         Your browser does not support the <code>audio</code> element.
     </audio>
 </figure>
+
 {% endfor %}
+{% endblock %}
