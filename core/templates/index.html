@@ -6,7 +6,15 @@
 {% for track in tracks %}
 
 <figure>
-    <figcaption>{{ track.author }} - {{ track.name }}</figcaption>
+    <figcaption>
+        <a href="{% url 'author' track.author %}">
+            {{ track.author }}
+        </a>
+         -
+        <a href="{% url 'track' track.author track.name %}">
+            {{ track.name }}
+        </a>
+    </figcaption>
     <audio controls src="{% static track.path %}">
         Your browser does not support the <code>audio</code> element.
     </audio>
