@@ -3,22 +3,34 @@
 
 
 {% block content %}
-{% for track in tracks %}
 
-<figure>
+<figure id="player">
     <figcaption>
-        <a href="{% url 'author' track.author %}">
-            {{ track.author }}
-        </a>
-        -
-        <a href="{% url 'track' track.author track.name %}">
-            {{ track.name }}
-        </a>
+        - no track -
     </figcaption>
-    <audio controls src="{{ track.file.url }}">
+    <audio controls>
         Your browser does not support the <code>audio</code> element.
     </audio>
 </figure>
 
+{% for track in tracks %}
+
+<ul>
+    <li onclick="set_track('{{ track.file.url }}', '{{ track.author }} - {{ track.name }}')">
+        <a href="{% url 'author' track.author %}">
+            {{ track.author }}
+        </a>
+        - {{ track.name }}
+    </li>
+</ul>
+
 {% endfor %}
+
+<script>
+function set_track(path_to_track, title) {
+    document.querySelector("#player audio").src = path_to_track
+    document.querySelector("#player figcaption").innerHTML = title
+}
+</script>
+
 {% endblock %}
