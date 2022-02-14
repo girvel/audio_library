@@ -13,30 +13,19 @@
             </audio>
         </figure>
 
-        [[ tracks ]]
+        <ul>
+            <li v-for="track in tracks">
+                [[ track.author ]] - [[ track.name ]]
+            </li>
+        </ul>
     </div>
 
-    {#{% for track in tracks %}#}
-    {##}
-    {#<ul>#}
-    {#    <li onclick="set_track('{{ track.file.url }}', '{{ track.author }} - {{ track.name }}')">#}
-    {#        <a href="{% url 'author' track.author %}">#}
-    {#            {{ track.author }}#}
-    {#        </a>#}
-    {#        - {{ track.name }}#}
-    {#    </li>#}
-    {#</ul>#}
-    {##}
-    {#{% endfor %}#}
-
-    {#<script>#}
-    {#    axios.get('/api/tracks').then(alert)#}
-    {##}
-    {#    function set_track(path_to_track, title) {#}
-    {#        document.querySelector("#player audio").src = path_to_track#}
-    {#        document.querySelector("#player figcaption").innerHTML = title#}
-    {#    }#}
-    {#</script>#}
+    <script>
+        function set_track(path_to_track, title) {
+            document.querySelector("#player audio").src = path_to_track
+            document.querySelector("#player figcaption").innerHTML = title
+        }
+    </script>
 
     <script>
         const app = {
@@ -46,10 +35,16 @@
 
             data() {
                 return {
-                    tracks: "123"
+                    tracks: []
                 }
-            }
+            },
+
+            mounted() {
+                axios.get('/api/tracks')
+                    .then(response => {this.tracks = response.data.tracks})
+            },
         }
+
         Vue.createApp(app).mount("#app")
 
     </script>
