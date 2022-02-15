@@ -1,0 +1,39 @@
+/* Basics */
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #071D24;
+    color: azure;
+    font-family: 'Courier New';
+}
+
+body, h1 {
+    font-size: 12pt;
+}
+
+figure {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Headers */
+
+h1 {
+    color: #6DAEDB;
+}
+
+/* Lists */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+li:before {
+    content: '- ';
+}

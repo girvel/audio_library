@@ -2,6 +2,11 @@
 {% load static %}
 
 
+{% block additional_headers %}
+    <link rel="stylesheet" href="{% static 'styles/player.css' %}" />
+{% endblock %}
+
+
 {% block content %}
     <div id="app">
         <figure id="player">
