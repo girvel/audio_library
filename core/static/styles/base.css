@@ -1,0 +1,65 @@
+/* Basics */
+
+body {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 10px;
+    background-color: #071D24;
+    color: azure;
+    font-family: 'Classic Console Neue', 'Courier New', monospace;
+    line-height: 1.1;
+}
+
+body, h1 {
+    font-size: 12pt;
+}
+
+figure {
+    margin: 0;
+}
+
+/* Headers */
+
+h1 {
+    font-weight: normal;
+    color: #6DAEDB;
+    margin: 0;
+}
+
+h1:before {
+    content: '# ';
+    color: rgba(255, 255, 255, 0.1);
+}
+
+h1:after {
+    content: '\a  ';
+    white-space: break-spaces;
+}
+
+/* Lists */
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+li:before {
+    content: '- ';
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: "Classic Console Neue";
+    src: url("/core/static/fonts/Classic Console Neue.ttf") format("truetype");
+}
+
+/* Buttons */
+
+.button:hover {
+    color: #89CE94;
+}
