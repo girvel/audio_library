@@ -6,26 +6,19 @@
     <div id="app">
         <figure id="player">
             <figcaption>
-                - no track -
+                [[ current_track?.author ]] - [[ current_track?.name ]]
             </figcaption>
-            <audio controls>
+            <audio controls :src="current_track?.file">
                 Your browser does not support the <code>audio</code> element.
             </audio>
         </figure>
 
         <ul>
-            <li v-for="track in tracks">
+            <li v-for="track in tracks" class="track_selector" @click="current_track = track">
                 [[ track.author ]] - [[ track.name ]]
             </li>
         </ul>
     </div>
-
-    <script>
-        function set_track(path_to_track, title) {
-            document.querySelector("#player audio").src = path_to_track
-            document.querySelector("#player figcaption").innerHTML = title
-        }
-    </script>
 
     <script>
         const app = {
@@ -35,6 +28,7 @@
 
             data() {
                 return {
+                    current_track: null,
                     tracks: []
                 }
             },
@@ -46,7 +40,6 @@
         }
 
         Vue.createApp(app).mount("#app")
-
     </script>
 
 {% endblock %}
