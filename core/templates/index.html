@@ -8,13 +8,13 @@
             <figcaption>
                 [[ current_track?.author ]] - [[ current_track?.name ]]
             </figcaption>
-            <audio controls :src="current_track?.file">
+            <audio :autoplay="is_playing" controls :src="current_track?.file" @ended="next_track">
                 Your browser does not support the <code>audio</code> element.
             </audio>
         </figure>
 
         <ul>
-            <li v-for="track in tracks" class="track_selector" @click="current_track = track">
+            <li v-for="track in tracks" class="track_selector" @click="set_track(track)">
                 [[ track.author ]] - [[ track.name ]]
             </li>
         </ul>
@@ -29,13 +29,28 @@
             data() {
                 return {
                     current_track: null,
-                    tracks: []
+                    tracks: [],
+                    is_playing: false,
                 }
             },
 
             mounted() {
                 axios.get('/api/tracks')
                     .then(response => {this.tracks = response.data.tracks})
+            },
+
+            methods: {
+                set_track(track) {
+                    this.current_track = track
+                    this.is_playing = true
+                },
+
+                next_track() {
+                    let next_i = this.tracks.indexOf(this.current_track) + 1
+                    if (next_i < this.tracks.length) {
+                        this.current_track = this.tracks[next_i]
+                    }
+                },
             },
         }
 
