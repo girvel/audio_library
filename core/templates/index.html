@@ -2,6 +2,11 @@
 {% load static %}
 
 
+{% block additional_headers %}
+    <link rel="stylesheet" href="{% static 'styles/player.css' %}" />
+{% endblock %}
+
+
 {% block content %}
     <div id="app">
         <figure id="player">
@@ -14,7 +19,10 @@
         </figure>
 
         <ul>
-            <li v-for="track in tracks" class="track_selector" @click="set_track(track)">
+            <li :class="{ active_selector: current_track == track }"
+                @click="set_track(track)"
+                class="button"
+                v-for="track in tracks">
                 [[ track.author ]] - [[ track.name ]]
             </li>
         </ul>
@@ -36,7 +44,10 @@
 
             mounted() {
                 axios.get('/api/tracks')
-                    .then(response => {this.tracks = response.data.tracks})
+                    .then(response => {
+                        this.tracks = response.data.tracks
+                        this.current_track = this.tracks[0]
+                    })
             },
 
             methods: {
