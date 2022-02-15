@@ -3,9 +3,10 @@
 body {
     max-width: 600px;
     margin: 0 auto;
+    padding-top: 10px;
     background-color: #071D24;
     color: azure;
-    font-family: 'Courier New';
+    font-family: 'Classic Console Neue', 'Courier New', monospace;
 }
 
 body, h1 {
@@ -13,14 +14,26 @@ body, h1 {
 }
 
 figure {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
 }
 
 /* Headers */
 
 h1 {
+    font-weight: normal;
     color: #6DAEDB;
+    margin: 0;
+}
+
+h1:before {
+    content: '# ';
+    color: rgba(255, 255, 255, 0.1);
+}
+
+h1:after {
+    content: '\a  ';
+    white-space: break-spaces;
+    color:
 }
 
 /* Lists */
@@ -36,4 +49,11 @@ li {
 
 li:before {
     content: '- ';
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: "Classic Console Neue";
+    src: url("/core/static/fonts/Classic Console Neue.ttf") format("truetype");
 }
