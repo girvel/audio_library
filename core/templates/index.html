@@ -6,15 +6,15 @@
     <div id="app">
         <figure id="player">
             <figcaption>
-                - no track -
+                [[ current_track?.author ]] - [[ current_track?.name ]]
             </figcaption>
-            <audio controls>
+            <audio controls :src="current_track?.file">
                 Your browser does not support the <code>audio</code> element.
             </audio>
         </figure>
 
         <ul>
-            <li v-for="track in tracks">
+            <li v-for="track in tracks" class="track_selector" @click="current_track = track">
                 [[ track.author ]] - [[ track.name ]]
             </li>
         </ul>
@@ -35,6 +35,7 @@
 
             data() {
                 return {
+                    current_track: null,
                     tracks: []
                 }
             },
