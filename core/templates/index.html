@@ -21,7 +21,7 @@
         <ul>
             <li :class="{ active_selector: current_track == track }"
                 @click="set_track(track)"
-                class="track_selector"
+                class="button"
                 v-for="track in tracks">
                 [[ track.author ]] - [[ track.name ]]
             </li>
@@ -44,7 +44,10 @@
 
             mounted() {
                 axios.get('/api/tracks')
-                    .then(response => {this.tracks = response.data.tracks})
+                    .then(response => {
+                        this.tracks = response.data.tracks
+                        this.current_track = this.tracks[0]
+                    })
             },
 
             methods: {

@@ -7,6 +7,7 @@ body {
     background-color: #071D24;
     color: azure;
     font-family: 'Classic Console Neue', 'Courier New', monospace;
+    line-height: 1.1;
 }
 
 body, h1 {
@@ -33,7 +34,6 @@ h1:before {
 h1:after {
     content: '\a  ';
     white-space: break-spaces;
-    color:
 }
 
 /* Lists */
@@ -56,4 +56,10 @@ li:before {
 @font-face {
     font-family: "Classic Console Neue";
     src: url("/core/static/fonts/Classic Console Neue.ttf") format("truetype");
+}
+
+/* Buttons */
+
+.button:hover {
+    color: #89CE94;
 }
