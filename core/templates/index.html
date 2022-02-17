@@ -1,13 +1,24 @@
-{% extends "base.html" %}
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Totally illegal Nikita's audio library
+    </title>
 
-{% block additional_headers %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <link rel="stylesheet" href="{% static "styles/base.css" %}" />
     <link rel="stylesheet" href="{% static 'styles/player.css' %}" />
-{% endblock %}
+</head>
 
+<body>
+    <header>
+        <h1>Totally illegal Nikita's audio library</h1>
+    </header>
 
-{% block content %}
     <div id="app">
         <figure id="player">
             <figcaption>
@@ -67,5 +78,5 @@
 
         Vue.createApp(app).mount("#app")
     </script>
-
-{% endblock %}
+</body>
+</html>
